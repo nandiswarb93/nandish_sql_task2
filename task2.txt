@@ -1,0 +1,51 @@
+1)
+
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    EmployeeName VARCHAR(100) NOT NULL,
+    DepartmentID INT,
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+
+CREATE TABLE Projects (
+    ProjectID INT PRIMARY KEY,
+    ProjectName VARCHAR(100) NOT NULL,
+    DepartmentID INT,
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+
+CREATE TABLE Budgets (
+    BudgetID INT PRIMARY KEY,
+    DepartmentID INT,
+    Amount DECIMAL(18, 2) NOT NULL,
+    Year INT NOT NULL,
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+
+CREATE TABLE Policies (
+    PolicyID INT PRIMARY KEY,
+    PolicyName VARCHAR(100) NOT NULL,
+    DepartmentID INT,
+    ImplementationDate DATE NOT NULL,
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+
+
+2)
+
+ALTER TABLE Employees
+DROP COLUMN address,
+DROP COLUMN pincode;
+
+
+3)
+
+ALTER TABLE Students
+ADD COLUMN height DECIMAL(5, 2),
+ADD COLUMN weight DECIMAL(5, 2);
+
